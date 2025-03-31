@@ -97,7 +97,7 @@
 #define HI // histogram sizes for HI
 //#define L1
 #define HLT
-//#define SINGLE_MODULES
+#define SINGLE_MODULES
 #define DCOLS
 #define DO_THR // use the threshold histo
 #define MONITOR_L1
