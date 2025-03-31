@@ -1,8 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Run3_2024_cff import Run3_2024
-#from Configuration.ProcessModifiers.siPixelDigiMorphing_cff import siPixelDigiMorphing
-#process = cms.Process("DigiToRaw1",Run3_2024,siPixelDigiMorphing)
 process = cms.Process("DigiToRaw1",Run3_2024)                                                                                                                                                              
 
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
@@ -15,7 +13,7 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '142X_mcRun3_2025_realistic_v5'
 process.load("EventFilter.SiPixelRawToDigi.SiPixelDigiToRaw_cfi")
 process.load("EventFilter.SiPixelRawToDigi.SiPixelRawToDigi_cfi")
 
-# for simultaions                                                                                                                                                                                           
+# for simultaions
 process.siPixelDigis.InputLabel = 'siPixelRawData'
 process.load("RecoLocalTracker.SiPixelDigiReProducers.siPixelDigisMorphed_cfi")
 
@@ -41,7 +39,6 @@ process.out = cms.OutputModule("PoolOutputModule",
 process.a = cms.EDAnalyzer("PixDigisTest",
     Verbosity = cms.untracked.bool(False),
     phase1 = cms.untracked.bool(True),
-    #src = cms.InputTag("siPixelDigis"),
     src = cms.InputTag("siPixelDigisMorphed"),
 )
 process.TFileService = cms.Service("TFileService",
@@ -49,5 +46,4 @@ process.TFileService = cms.Service("TFileService",
 )
 
 process.p = cms.Path(process.siPixelRawData*process.siPixelDigis*process.siPixelDigisMorphed*process.a)
-#process.p = cms.Path(process.siPixelRawData*process.siPixelDigis*process.a)
 process.ep = cms.EndPath(process.out)
