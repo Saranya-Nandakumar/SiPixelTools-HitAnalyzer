@@ -43,7 +43,7 @@ def plot(histograms1, histograms2, file1_label, file2_label):
                 print(f"Skipping {name}: One or both histograms are missing")
                 continue
 
-            hists_to_plot = {"hpixDetMap18", "hpixDetMap19"}
+            hists_to_plot = {"hpixDetMap10", "hpixDetMap18", "hpixDetMap19"}
 
             if name not in hists_to_plot:
                 continue
