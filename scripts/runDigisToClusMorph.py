@@ -26,6 +26,7 @@ process.load("EventFilter.SiPixelRawToDigi.SiPixelRawToDigi_cfi")
 #process.load('Configuration.StandardSequences.RawToDigi_cff')
 
 process.siPixelDigis.InputLabel = 'siPixelRawData'
+process.load("RecoLocalTracker.SiPixelDigiReProducers.siPixelDigisMorphed_cfi")
 #process.siPixelDigis.InputLabel = 'rawDataCollector'
 #process.siStripDigis.ProductLabel = 'SiStripDigiToRaw'
 
@@ -42,7 +43,7 @@ process.maxEvents = cms.untracked.PSet(
 
 #process.siPixelClusters.src = 'siPixelDigis'
 process.siPixelClusters = cms.EDProducer("SiPixelClusterProducer",
-    src = cms.InputTag("siPixelDigis")
+    src = cms.InputTag("siPixelDigisMorphed")
 )
 
 process.MessageLogger = cms.Service("MessageLogger",
@@ -67,7 +68,7 @@ process.source = cms.Source("PoolSource",
 
 # a service to use root histos
 process.TFileService = cms.Service("TFileService",
-    fileName = cms.string('histoClus.root')
+    fileName = cms.string('histoClusMorph.root')
 )
 
 
@@ -151,7 +152,7 @@ if useLocalDB :
 process.o1 = cms.OutputModule("PoolOutputModule",
                               outputCommands = cms.untracked.vstring('drop *','keep *_*_*_ClusTest'),
 #            fileName = cms.untracked.string('file:clus.root')
-            fileName = cms.untracked.string('file:clus2.root')
+            fileName = cms.untracked.string('file:clus2Morph.root')
 )
 
 #process.Timing = cms.Service("Timing")
@@ -194,7 +195,7 @@ process.analysis = cms.EDAnalyzer("PixClusterTest",
 
 #process.p1 = cms.Path(process.siPixelRawData)
 #process.p1 = cms.Path(process.siPixelRawData*process.siPixelDigis)
-process.p1 = cms.Path(process.siPixelRawData*process.siPixelDigis*process.siPixelClusters*process.analysis)
+process.p1 = cms.Path(process.siPixelRawData*process.siPixelDigis*process.siPixelDigisMorphed*process.siPixelClusters*process.analysis)
 
 # for no output comment it out
 # process.outpath = cms.EndPath(process.o1)
