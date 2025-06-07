@@ -37,7 +37,7 @@ process.load('Configuration.EventContent.EventContent_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(1)
 )
 
 #process.siPixelClusters.src = 'siPixelDigis'
@@ -61,7 +61,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 # get the files from DBS:
 process.source = cms.Source("PoolSource", 
   fileNames =  cms.untracked.vstring(
-  'file:/p/project1/training2508/cms_digi_morphing/store/relval/CMSSW_15_0_0/RelValTTbar_14TeV/GEN-SIM-DIGI-RAW/PU_142X_mcRun3_2025_realistic_v7_STD_2025_PU-v3/2580000/1c2caeef-e246-4b6d-bebc-4fb6df4f9bbd.root'
+  'file:step2.root'
  )
 )
 

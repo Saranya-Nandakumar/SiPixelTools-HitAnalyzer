@@ -17,11 +17,13 @@ process.load("EventFilter.SiPixelRawToDigi.SiPixelRawToDigi_cfi")
 process.siPixelDigis.InputLabel = 'siPixelRawData'
 process.load("RecoLocalTracker.SiPixelDigiReProducers.siPixelDigisMorphed_cfi")
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10))
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1))
+
+#process.load("run383631_cff")
 
 process.source = cms.Source("PoolSource",
   fileNames =  cms.untracked.vstring(
-  'file:/p/project1/training2508/cms_digi_morphing/store/relval/CMSSW_15_0_0/RelValTTbar_14TeV/GEN-SIM-DIGI-RAW/PU_142X_mcRun3_2025_realistic_v7_STD_2025_PU-v3/2580000/1c2caeef-e246-4b6d-bebc-4fb6df4f9bbd.root'
+  'file:step2.root'
  )
 )
 
