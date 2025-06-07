@@ -8,9 +8,9 @@ Various codes to test pixel simHits, digis, clusters and recHits.
 Prepare your working directory with CMSSW
 
 ```
-export SCRAM_ARCH=slc7_amd64_gcc820
-cmsrel CMSSW_11_2_0
-cd CMSSW_11_2_0/src
+export SCRAM_ARCH=el8_amd64_gcc12
+cmsrel CMSSW_15_0_5
+cd CMSSW_15_0_5/src
 cmsenv
 git clone https://github.com/CMSTrackerDPG/SiPixelTools-HitAnalyzer.git SiPixelTools/HitAnalyzer
 scram b -j 8
