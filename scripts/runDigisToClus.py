@@ -197,4 +197,4 @@ process.analysis = cms.EDAnalyzer("PixClusterTest",
 process.p1 = cms.Path(process.siPixelRawData*process.siPixelDigis*process.siPixelClusters*process.analysis)
 
 # for no output comment it out
-# process.outpath = cms.EndPath(process.o1)
+process.outpath = cms.EndPath(process.o1)
