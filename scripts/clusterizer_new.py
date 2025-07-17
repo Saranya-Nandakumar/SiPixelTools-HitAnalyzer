@@ -100,3 +100,18 @@ process.options.wantSummary = False
 process.NVProfilerService = cms.Service("NVProfilerService",
     showModulePrefetching = cms.untracked.bool(False)
 )
+
+# === 1) Define the output module ===
+process.out = cms.OutputModule("PoolOutputModule",
+    fileName       = cms.untracked.string("myClustersmorph.root"),
+    # pick a pre-defined “event content” or roll your own:
+    outputCommands = cms.untracked.vstring('keep *')
+    # optionally only write events that passed your Path:
+    # SelectEvents   = cms.untracked.PSet( SelectEvents = cms.vstring('path') )
+)
+
+# === 2) Hook it into an EndPath ===
+process.endpath = cms.EndPath(process.out)
+
+# === 3) Make sure your schedule includes both the processing Path and the EndPath ===
+process.schedule = cms.Schedule(process.path, process.endpath)
